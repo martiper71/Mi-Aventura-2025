@@ -2,30 +2,232 @@ import tkinter as tk
 import os
 
 # ---------------------------
-# 1. DATOS DEL JUEGO (mínimo)
+# 1. DATOS DEL JUEGO
 # ---------------------------
 
 # Descripción base fija por sala. El índice es el número de habitación.
 txt_base = [
-    "",  # 0: portada
-    "Te despiertas en una habitación tranquila y vacía.\n"
-    "Aquí empieza tu aventura.",  # 1: primera habitación
+    "Portada\n\nSTAR QUEST: SOMBRAS DE KORRIBAN",
+    # 1
+    "Te despiertas entre chispas y humo dentro de la cápsula de escape de tu carguero. "
+    "El cristal delantero está roto y, fuera, solo ves un océano de arena rojiza.",
+    # 2
+    "2. Exterior de la nave\n"
+    "Has salido de la cápsula. Restos humeantes del fuselaje están dispersos por la arena. "
+    "El viento del desierto azota con fuerza.",
+    # 3
+    "3. Desfiladero\n"
+    "Un estrecho desfiladero de roca negra se abre ante ti. Más abajo intuyes la entrada de una cueva.",
+    # 4
+    "4. Cueva oculta\n"
+    "La oscuridad te envuelve. Cristales rojizos incrustados en la roca emiten un brillo débil.",
+    # 5
+    "5. Campamento abandonado\n"
+    "Restos de un pequeño campamento: tiendas rasgadas, huellas medio borradas y una hoguera apagada hace días.",
+    # 6
+    "6. Torre de señal\n"
+    "Una delgada torre de comunicaciones imperial sobresale sobre la roca. Está dañada y chisporrotea.\n"
+    "Tal vez podrías REPARAR la torre si encuentras algún módulo adecuado.",
+    # 7
+    "7. Entrada al templo Sith\n"
+    "Un arco de piedra negra, tallado con símbolos antiguos, marca la entrada a un templo subterráneo.\n"
+    "Al fondo se adivina una puerta de piedra que parece reaccionar a símbolos Sith.",
+    # 8
+    "8. Ruinas de piedra\n"
+    "Columnas derrumbadas y trozos de estatuas antiguas rodean la zona. El silencio es casi absoluto.",
+    # 9
+    "9. Pasillo de guardianes\n"
+    "Estatuas Sith alineadas a ambos lados del pasillo parecen observar cada uno de tus movimientos.",
+    # 10
+    "10. Sala del eco\n"
+    "Una cámara circular de piedra. Cada sonido se repite una y otra vez, como si el propio templo escuchara.\n"
+    "Quizá si GRITAS ocurra algo.",
+    # 11
+    "11. Galería del poder\n"
+    "Un pasillo cargado de energía oscura. La piedra vibra levemente bajo tus pies.",
+    # 12
+    "12. Cámara de meditación\n"
+    "Un pequeño recinto silencioso, con un círculo tallado en el suelo, pensado para la contemplación.",
+    # 13
+    "13. Cámara del sacrificio\n"
+    "Pilares manchados, cadenas antiguas y un altar central. El ambiente es opresivo.",
+    # 14
+    "14. Archivo prohibido\n"
+    "Estanterías de datos, reliquias y holocrones sellados. Algún dispositivo aún parpadea.\n"
+    "Quizá EXAMINAR el DATAPAD te dé información útil.",
+    # 15
+    "15. Sala del artefacto\n"
+    "En el centro, sobre un pedestal, descansa un artefacto de diseño Sith que emite un zumbido grave.",
+    # 16
+    "16. Salida secreta al exterior\n"
+    "Una rampa ascendente lleva hacia la luz. Aire caliente del desierto se cuela por una rendija.",
+    # 17
+    "17. Perímetro de la base imperial\n"
+    "Paneles metálicos y antenas sobresalen de la roca: una instalación imperial camuflada en el desierto.",
+    # 18
+    "18. Hangar secundario\n"
+    "Un hangar pequeño con restos de cazas TIE desmontados y contenedores de carga apilados.",
+    # 19
+    "19. Oficina del oficial\n"
+    "Una mesa metálica, una consola encendida y varias holopantallas con informes tácticos.",
+    # 20
+    "20. Centro de comunicaciones\n"
+    "Pantallas, consolas y un gran transmisor apuntando al cielo. Se oyen débiles voces imperiales por los altavoces.\n"
+    "Tal vez puedas CONTACTAR con la flota Rebelde desde aquí.",
+    # 21
+    "21. Sala de energía\n"
+    "Un generador rugiente llena la sala con un zumbido constante. Varias conducciones energéticas salen de él.\n"
+    "Si lo SABOTEAS podrías desactivar parte de las defensas imperiales.",
+    # 22
+    "22. Celdas de prisioneros\n"
+    "Pequeñas celdas alineadas. En una de ellas, un prisionero Rebelde te observa con esperanza.\n"
+    "Quizá puedas LIBERAR al prisionero.",
+    # 23
+    "23. Laboratorio de investigación\n"
+    "Mesas llenas de instrumentos, contenedores y restos de tecnología Sith analizada.",
+    # 24
+    "24. Ascensor al nivel superior\n"
+    "Un ascensor imperial conecta esta zona con una plataforma por encima del templo.",
+    # 25
+    "25. Terraza del templo\n"
+    "Desde aquí se domina el desierto de Korriban. El viento sopla con fuerza entre los restos de estatuas.",
+    # 26
+    "26. Pasarela al cañón\n"
+    "Una estrecha pasarela metálica cruza un profundo cañón. Cruje con cada paso.",
+    # 27
+    "27. Nido de k’lor’slug\n"
+    "Una bestia k’lor’slug descansa entre huesos y armaduras destrozadas. Mejor no molestarla.",
+    # 28
+    "28. Cámara del antiguo maestro Sith\n"
+    "Inscripciones en las paredes relatan hazañas de un maestro Sith olvidado hace siglos.",
+    # 29
+    "29. Pasadizo hacia el hangar principal\n"
+    "Un túnel parcialmente derrumbado conduce hacia una zona imperial fuertemente reforzada.",
+    # 30
+    "30. Hangar imperial principal\n"
+    "Soldadura reciente, cajas marcadas con el emblema imperial y una nave Lambda en reposo.",
+    # 31
+    "31. Nave Lambda\n"
+    "Un transporte imperial de tipo Lambda espera en la plataforma, con la rampa de acceso bajada.\n"
+    "Cuando lo tengas todo listo, escribe DESPEGAR.",
+    # 32
+    "32. Cielo de Korriban\n"
+    "Te elevas sobre el planeta, dejando atrás el templo, la base imperial y los ecos del Lado Oscuro."
 ]
 
-# Rutas de imágenes por índice de habitación.
-img = [
-    "imagenes/000.png",  # 0: portada
-    "imagenes/001.png",  # 1: primera habitación
-]
+# Rutas de imágenes por índice de habitación (000..032).
+# Puedes ir creando los PNG correspondientes en la carpeta imagenes/.
+img = [f"imagenes/{i:03d}.png" for i in range(33)]
 
-# Objetos iniciales por sala (vacío para empezar).
-OBJETOS_INICIALES = {
-    1: [],
+# Mapa de conexiones entre habitaciones
+# Claves: nº de sala; valores: dict de dirección normalizada -> nº de sala destino.
+# Direcciones válidas: n, s, e, o, subir, bajar
+SALIDAS = {
+    1:  {"n": 2},
+    2:  {"s": 1, "e": 3, "n": 5},
+    3:  {"o": 2, "bajar": 4},
+    4:  {"subir": 3},
+    5:  {"s": 2, "e": 6, "n": 8},
+    6:  {"o": 5, "n": 7},
+
+    7:  {"s": 6, "o": 8, "bajar": 9},
+    8:  {"s": 5, "e": 7},
+
+    9:  {"subir": 7, "e": 10, "o": 11},
+    10: {"o": 9, "e": 13},
+    11: {"e": 9, "s": 12},
+    12: {"n": 11, "e": 14},
+    13: {"o": 10, "e": 15},
+    14: {"o": 12, "e": 16},
+    15: {"o": 13},
+    16: {"o": 14, "subir": 17},
+
+    17: {"e": 18, "n": 25, "bajar": 16},
+    18: {"o": 17, "e": 23, "s": 21},
+    19: {"o": 23, "s": 20},
+    20: {"n": 19},
+    21: {"n": 18},
+    22: {"n": 23},
+    23: {"o": 18, "s": 22, "n": 24, "e": 19},
+    24: {"s": 23, "e": 29},
+
+    25: {"s": 17, "e": 26},
+    26: {"o": 25, "n": 27},
+    27: {"s": 26, "e": 28},
+    28: {"o": 27},
+    29: {"o": 24, "e": 30},
+    30: {"o": 29, "e": 31},
+    31: {"o": 30},
+# 32 (cielo) no se usa como sala visitable; es solo descriptiva para el final.
 }
 
-# Descripciones opcionales de objetos (puedes ir rellenando al crear objetos).
+
+# Objetos iniciales por sala
+OBJETOS_INICIALES = {
+    1: ["comunicador"],
+    2: ["modulo"],
+    3: ["cuerda"],
+    4: ["kyber"],
+    5: ["raciones"],
+    8: ["simbolo"],
+    9: ["sable"],
+    14: ["datapad"],
+    18: ["disfraz"],
+    19: ["tarjeta"],
+    23: ["combustible"],
+    15: ["artefacto"],
+}
+
+# Descripciones de objetos
 DESCRIPCIONES_OBJETOS = {
-    # "llave": {"sala": "Una pequeña llave.", "inventario": "Llevas una pequeña llave."},
+    "comunicador": {
+        "sala": "Un pequeño comunicador portátil, cubierto de polvo rojizo.",
+        "inventario": "Tu comunicador portátil, con el canal rebelde memorizado."
+    },
+    "modulo": {
+        "sala": "Un módulo de circuitos medio fundido, arrancado de algún panel imperial.",
+        "inventario": "Un módulo de circuitos que quizá puedas acoplar a alguna máquina estropeada."
+    },
+    "cuerda": {
+        "sala": "Una resistente cuerda de fibra, algo deshilachada pero útil.",
+        "inventario": "Una cuerda de fibra que podría ayudarte a subir o bajar por algún lugar peligroso."
+    },
+    "kyber": {
+        "sala": "Un pequeño cristal kyber rojizo, que vibra suavemente en tu mano.",
+        "inventario": "Llevas contigo un cristal kyber impregnado del Lado Oscuro."
+    },
+    "raciones": {
+        "sala": "Un paquete de raciones de campaña casi intacto.",
+        "inventario": "Un paquete de raciones de campaña; no es sabroso, pero alimenta."
+    },
+    "simbolo": {
+        "sala": "Un medallón de metal oscuro con el emblema de un antiguo linaje Sith.",
+        "inventario": "Llevas un medallón Sith que podría abrir puertas antiguas."
+    },
+    "sable": {
+        "sala": "Un viejo sable láser inservible; solo queda la empuñadura quemada.",
+        "inventario": "La empuñadura de un sable láser sin energía, más simbólica que útil."
+    },
+    "datapad": {
+        "sala": "Un datapad imperial con informes sobre el templo y el artefacto.",
+        "inventario": "El datapad imperial; en él se detallan planes sobre el artefacto y la base."
+    },
+    "disfraz": {
+        "sala": "Una armadura de soldado de asalto, algo dañada pero utilizable como disfraz.",
+        "inventario": "Llevas puesto (o cargando) un disfraz de soldado imperial bastante convincente."
+    },
+    "tarjeta": {
+        "sala": "Una tarjeta de acceso imperial con alto nivel de autorización.",
+        "inventario": "Una tarjeta de acceso que abre puertas protegidas de la base."
+    },
+    "combustible": {
+        "sala": "Un contenedor de combustible compatible con naves Lambda.",
+        "inventario": "Un contenedor de combustible listo para cargar en una nave Lambda."
+    },
+    "artefacto": {
+        "sala": "Un artefacto Sith de diseño intrincado. Sientes que algo dentro de ti reacciona a su presencia.",
+        "inventario": "Llevas el artefacto Sith. Su poder es inquietante, pero podría cambiar el rumbo de la guerra."
+    },
 }
 
 
@@ -34,12 +236,23 @@ def clonar_objetos_iniciales():
     return {hab: list(objs) for hab, objs in OBJETOS_INICIALES.items()}
 
 
+# Estado global adicional (condiciones de la aventura)
+estado = {}
+
+
 def restablecer_estado_inicial():
     """Restituye inventario, posición y objetos como si empezara una partida nueva."""
-    global habitacion_actual, inventario, objetos_en_sala
+    global habitacion_actual, inventario, objetos_en_sala, estado
     habitacion_actual = 1
     inventario = []
     objetos_en_sala = clonar_objetos_iniciales()
+    estado = {
+        "torre_reparada": False,
+        "pasadizo_eco_abierto": False,
+        "prisionero_libre": False,
+        "generador_sabotado": False,
+        "contacto_flota": False,
+    }
 
 
 # Inicializamos por primera vez
@@ -72,8 +285,54 @@ def lista_a_texto_natural(lista):
 
 def nombre_visible_inventario(nombre):
     """Cómo se nombra un objeto de forma humana. Por defecto, su nombre literal."""
-    return nombre
+    return nombre_visible_sala(nombre)
 
+
+# Articles and gender/number map for objects shown in rooms
+GENERO_OBJETOS = {
+    # Singular masculino
+    "comunicador": "m",
+    "modulo": "m",
+    "kyber": "m",
+    "simbolo": "m",
+    "sable": "m",
+    "datapad": "m",
+    "disfraz": "m",
+    "combustible": "m",
+    "artefacto": "m",
+    # Singular femenino
+    "cuerda": "f",
+    "tarjeta": "f",
+    # Plural femenino
+    "raciones": "fp",
+}
+
+def _articulo_indefinido(genero):
+    if genero == "m":
+        return "un"
+    if genero == "f":
+        return "una"
+    if genero == "mp":
+        return "unos"
+    if genero == "fp":
+        return "unas"
+    return "un"
+
+def nombre_visible_sala(nombre):
+    """Nombre del objeto en sala con articulo indefinido adecuado."""
+    genero = GENERO_OBJETOS.get(nombre)
+    if genero is None:
+        n = nombre.lower()
+        if n.endswith("as"):
+            genero = "fp"
+        elif n.endswith("os"):
+            genero = "mp"
+        elif n.endswith("a"):
+            genero = "f"
+        else:
+            genero = "m"
+    art = _articulo_indefinido(genero)
+    return f"{art} {nombre}"
 
 def normaliza_objeto_usuario(texto_objeto):
     """
@@ -118,7 +377,7 @@ def descripcion_con_objetos(hab):
     objs = objetos_visibles_en_sala(hab)
     if len(objs) == 0:
         return base
-    visibles = [nombre_visible_inventario(o) for o in objs]
+    visibles = [nombre_visible_sala(o) for o in objs]
     extra = f" También puedes observar que hay {lista_a_texto_natural(visibles)}."
     return base + " " + extra.strip()
 
@@ -170,12 +429,12 @@ def parsear(frase_usuario):
 
 
 # ---------------------------
-# 4. MOTOR DEL JUEGO (genérico)
+# 4. MOTOR DEL JUEGO
 # ---------------------------
 
 def ejecutar_comando(verbo, objeto):
     """Devuelve (nueva_hab, descripcion_sala, mensaje_extra)."""
-    global habitacion_actual, inventario, objetos_en_sala
+    global habitacion_actual, inventario, objetos_en_sala, estado
     hab = habitacion_actual
 
     # INVENTARIO
@@ -220,10 +479,109 @@ def ejecutar_comando(verbo, objeto):
 
     # MOVERSE
     if verbo == "ir":
-        # Por ahora solo hay una habitación: cualquier dirección es inválida.
-        return hab, descripcion_con_objetos(hab), "No puedes ir en esa dirección."
+        dir_norm = objeto
+        if dir_norm not in ["n", "s", "e", "o", "subir", "bajar"]:
+            return hab, descripcion_con_objetos(hab), "No puedes ir en esa dirección."
 
-    # FIN DEL JUEGO
+        salidas_hab = SALIDAS.get(hab, {})
+        destino = salidas_hab.get(dir_norm)
+        if destino is None:
+            return hab, descripcion_con_objetos(hab), "No puedes ir en esa dirección."
+
+        # Restricciones especiales
+        if hab == 7 and dir_norm == "bajar" and "simbolo" not in inventario:
+            return hab, descripcion_con_objetos(hab), (
+                "La puerta de piedra no reacciona; quizá necesites algún símbolo Sith."
+            )
+        if hab == 10 and dir_norm == "e" and not estado.get("pasadizo_eco_abierto", False):
+            return hab, descripcion_con_objetos(hab), (
+                "El eco te devuelve tus pasos, pero la pared este sigue cerrada."
+            )
+
+        return destino, descripcion_con_objetos(destino), None
+
+    # GRITAR en sala del eco (abre pasadizo)
+    if verbo in ["gritar"] and hab == 10:
+        estado["pasadizo_eco_abierto"] = True
+        return hab, descripcion_con_objetos(hab), (
+            "Tu grito retumba una y otra vez hasta que oyes un clic en la pared este."
+        )
+
+    # CONTACTAR con la flota en centro de comunicaciones
+    if verbo in ["contactar", "comunicar", "transmitir"] and hab == 20:
+        if not estado.get("contacto_flota", False):
+            estado["contacto_flota"] = True
+            return hab, descripcion_con_objetos(hab), (
+                "Logras enviar un mensaje codificado a la flota Rebelde. "
+                "Una voz te confirma la recepción y promete apoyo."
+            )
+        else:
+            return hab, descripcion_con_objetos(hab), "Ya has establecido contacto con la flota Rebelde."
+
+    # SABOTEAR generador
+    if verbo in ["sabotear"] and hab == 21:
+        if not estado.get("generador_sabotado", False):
+            estado["generador_sabotado"] = True
+            return hab, descripcion_con_objetos(hab), (
+                "Manipulas los controles del generador hasta que comienzan a saltar chispas. "
+                "El campo de energía de la base falla."
+            )
+        else:
+            return hab, descripcion_con_objetos(hab), "El generador ya está inestable y a punto de colapsar."
+
+    # LIBERAR prisionero
+    if verbo in ["liberar"] and hab == 22:
+        if not estado.get("prisionero_libre", False):
+            estado["prisionero_libre"] = True
+            return hab, descripcion_con_objetos(hab), (
+                "Forzas el cierre de la celda y el prisionero Rebelde queda libre. "
+                "Te agradece la ayuda y te promete apoyo desde las sombras."
+            )
+        else:
+            return hab, descripcion_con_objetos(hab), "Las celdas ya están abiertas y vacías."
+
+    # REPARAR torre de señal con el módulo
+    if verbo in ["reparar"] and hab == 6:
+        if "modulo" in inventario and not estado.get("torre_reparada", False):
+            estado["torre_reparada"] = True
+            return hab, descripcion_con_objetos(hab), (
+                "Acoplas el módulo a la torre de señal. Varias luces se encienden: "
+                "las comunicaciones de largo alcance vuelven a funcionar."
+            )
+        elif estado.get("torre_reparada", False):
+            return hab, descripcion_con_objetos(hab), "La torre de señal ya está reparada."
+        else:
+            return hab, descripcion_con_objetos(hab), "No tienes nada con lo que reparar la torre."
+
+    # DESPEGAR desde la nave Lambda (final del juego)
+    if verbo == "despegar":
+        if hab != 31:
+            return hab, descripcion_con_objetos(hab), "Aquí no hay ninguna nave desde la que puedas despegar."
+        faltan = []
+        if "artefacto" not in inventario:
+            faltan.append("el artefacto Sith")
+        if "combustible" not in inventario:
+            faltan.append("combustible para la nave")
+        if not estado.get("contacto_flota", False):
+            faltan.append("contactar con la flota Rebelde")
+        if not estado.get("generador_sabotado", False):
+            faltan.append("sabotar el generador imperial")
+
+        if faltan:
+            return hab, descripcion_con_objetos(hab), (
+                "Aún no puedes despegar: te falta " + lista_a_texto_natural(faltan) + "."
+            )
+
+        mensaje_final = (
+            "Cargas el combustible, programas las coordenadas y elevas la nave Lambda hacia el cielo de Korriban.\n\n"
+            "Has escapado con el artefacto Sith y has dejado la base imperial al borde del colapso.\n"
+            "La flota Rebelde te espera para analizar el objeto y decidir su destino.\n\n"
+            "¡HAS COMPLETADO LA AVENTURA!"
+        )
+        cerrar_juego_despues(mensaje_final)
+        return hab, descripcion_con_objetos(hab), mensaje_final
+
+    # FIN DEL JUEGO manual
     if verbo == "fin":
         mensaje_final = "Gracias por jugar."
         cerrar_juego_despues(mensaje_final)
@@ -238,7 +596,7 @@ def ejecutar_comando(verbo, objeto):
 # ---------------------------
 
 fondo = tk.Tk()
-fondo.title("Mi Aventura 2025")
+fondo.title("Star Quest. Sombras de Korriban")
 fondo.configure(background="black")
 
 # Centrar ventana 800x640
@@ -406,4 +764,3 @@ def motor_juego(event):
 entrada.bind("<Return>", motor_juego)
 mostrar_pantalla_inicio()
 fondo.mainloop()
-
