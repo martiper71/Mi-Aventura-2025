@@ -12,106 +12,75 @@ txt_base = [
     "Te despiertas entre chispas y humo dentro de la cápsula de escape de tu carguero. "
     "El cristal delantero está roto y, fuera, solo ves un océano de arena rojiza.",
     # 2
-    "2. Exterior de la nave\n"
     "Has salido de la cápsula. Restos humeantes del fuselaje están dispersos por la arena. "
     "El viento del desierto azota con fuerza.",
     # 3
-    "3. Desfiladero\n"
     "Un estrecho desfiladero de roca negra se abre ante ti. Más abajo intuyes la entrada de una cueva.",
     # 4
-    "4. Cueva oculta\n"
     "La oscuridad te envuelve. Cristales rojizos incrustados en la roca emiten un brillo débil.",
     # 5
-    "5. Campamento abandonado\n"
     "Restos de un pequeño campamento: tiendas rasgadas, huellas medio borradas y una hoguera apagada hace días.",
     # 6
-    "6. Torre de señal\n"
     "Una delgada torre de comunicaciones imperial sobresale sobre la roca. Está dañada y chisporrotea.\n"
     "Tal vez podrías REPARAR la torre si encuentras algún módulo adecuado.",
     # 7
-    "7. Entrada al templo Sith\n"
     "Un arco de piedra negra, tallado con símbolos antiguos, marca la entrada a un templo subterráneo.\n"
     "Al fondo se adivina una puerta de piedra que parece reaccionar a símbolos Sith.",
     # 8
-    "8. Ruinas de piedra\n"
     "Columnas derrumbadas y trozos de estatuas antiguas rodean la zona. El silencio es casi absoluto.",
     # 9
-    "9. Pasillo de guardianes\n"
     "Estatuas Sith alineadas a ambos lados del pasillo parecen observar cada uno de tus movimientos.",
     # 10
-    "10. Sala del eco\n"
     "Una cámara circular de piedra. Cada sonido se repite una y otra vez, como si el propio templo escuchara.\n"
     "Quizá si GRITAS ocurra algo.",
     # 11
-    "11. Galería del poder\n"
     "Un pasillo cargado de energía oscura. La piedra vibra levemente bajo tus pies.",
     # 12
-    "12. Cámara de meditación\n"
     "Un pequeño recinto silencioso, con un círculo tallado en el suelo, pensado para la contemplación.",
     # 13
-    "13. Cámara del sacrificio\n"
     "Pilares manchados, cadenas antiguas y un altar central. El ambiente es opresivo.",
     # 14
-    "14. Archivo prohibido\n"
     "Estanterías de datos, reliquias y holocrones sellados. Algún dispositivo aún parpadea.\n"
     "Quizá EXAMINAR el DATAPAD te dé información útil.",
     # 15
-    "15. Sala del artefacto\n"
     "En el centro, sobre un pedestal, descansa un artefacto de diseño Sith que emite un zumbido grave.",
     # 16
-    "16. Salida secreta al exterior\n"
     "Una rampa ascendente lleva hacia la luz. Aire caliente del desierto se cuela por una rendija.",
     # 17
-    "17. Perímetro de la base imperial\n"
     "Paneles metálicos y antenas sobresalen de la roca: una instalación imperial camuflada en el desierto.",
     # 18
-    "18. Hangar secundario\n"
     "Un hangar pequeño con restos de cazas TIE desmontados y contenedores de carga apilados.",
     # 19
-    "19. Oficina del oficial\n"
     "Una mesa metálica, una consola encendida y varias holopantallas con informes tácticos.",
     # 20
-    "20. Centro de comunicaciones\n"
     "Pantallas, consolas y un gran transmisor apuntando al cielo. Se oyen débiles voces imperiales por los altavoces.\n"
     "Tal vez puedas CONTACTAR con la flota Rebelde desde aquí.",
     # 21
-    "21. Sala de energía\n"
     "Un generador rugiente llena la sala con un zumbido constante. Varias conducciones energéticas salen de él.\n"
     "Si lo SABOTEAS podrías desactivar parte de las defensas imperiales.",
     # 22
-    "22. Celdas de prisioneros\n"
     "Pequeñas celdas alineadas. En una de ellas, un prisionero Rebelde te observa con esperanza.\n"
     "Quizá puedas LIBERAR al prisionero.",
     # 23
-    "23. Laboratorio de investigación\n"
     "Mesas llenas de instrumentos, contenedores y restos de tecnología Sith analizada.",
     # 24
-    "24. Ascensor al nivel superior\n"
     "Un ascensor imperial conecta esta zona con una plataforma por encima del templo.",
     # 25
-    "25. Terraza del templo\n"
     "Desde aquí se domina el desierto de Korriban. El viento sopla con fuerza entre los restos de estatuas.",
     # 26
-    "26. Pasarela al cañón\n"
     "Una estrecha pasarela metálica cruza un profundo cañón. Cruje con cada paso.",
     # 27
-    "27. Nido de k’lor’slug\n"
     "Una bestia k’lor’slug descansa entre huesos y armaduras destrozadas. Mejor no molestarla.",
     # 28
-    "28. Cámara del antiguo maestro Sith\n"
     "Inscripciones en las paredes relatan hazañas de un maestro Sith olvidado hace siglos.",
     # 29
-    "29. Pasadizo hacia el hangar principal\n"
     "Un túnel parcialmente derrumbado conduce hacia una zona imperial fuertemente reforzada.",
     # 30
-    "30. Hangar imperial principal\n"
     "Soldadura reciente, cajas marcadas con el emblema imperial y una nave Lambda en reposo.",
     # 31
-    "31. Nave Lambda\n"
     "Un transporte imperial de tipo Lambda espera en la plataforma, con la rampa de acceso bajada.\n"
     "Cuando lo tengas todo listo, escribe DESPEGAR.",
     # 32
-    "32. Cielo de Korriban\n"
     "Te elevas sobre el planeta, dejando atrás el templo, la base imperial y los ecos del Lado Oscuro."
 ]
 
