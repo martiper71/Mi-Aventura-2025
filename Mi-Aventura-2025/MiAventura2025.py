@@ -1,7 +1,7 @@
 import tkinter as tk
 import os
 # ------------------------------
-# FECHA MODIFICACIÓN: 2025-11-14
+# FECHA MODIFICACIÓN: 2025-11-15
 # ------------------------------
 # ---------------------------
 # 1. DATOS DEL JUEGO
@@ -515,9 +515,10 @@ def ejecutar_comando(verbo, objeto):
     if verbo in ["reparar"] and hab == 6:
         if "modulo" in inventario and not estado.get("torre_reparada", False):
             estado["torre_reparada"] = True
+            inventario.remove("modulo")
             return hab, descripcion_con_objetos(hab), (
                 "Acoplas el módulo a la torre de señal. Varias luces se encienden: "
-                "las comunicaciones de largo alcance vuelven a funcionar."
+                "las comunicaciones de largo alcance vuelven a funcionar. El módulo queda integrado y ya no lo llevas."
             )
         elif estado.get("torre_reparada", False):
             return hab, descripcion_con_objetos(hab), "La torre de señal ya está reparada."
