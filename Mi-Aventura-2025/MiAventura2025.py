@@ -1,7 +1,7 @@
 import tkinter as tk
 import os
 # ------------------------------
-# FECHA MODIFICACIÓN: 2025-11-15
+# FECHA MODIFICACIÓN: 2025-11-25
 # ------------------------------
 # ---------------------------
 # 1. DATOS DEL JUEGO
