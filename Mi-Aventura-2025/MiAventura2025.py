@@ -1,7 +1,7 @@
 import tkinter as tk
 import os
 # ------------------------------
-# FECHA MODIFICACIÓN: 2025-11-15
+# FECHA MODIFICACIÓN: 2025-12-15
 # ------------------------------
 # ---------------------------
 # 1. DATOS DEL JUEGO
@@ -385,6 +385,8 @@ def parsear(frase_usuario):
             return "mirar", None
         if palabra in ["fin", "salir", "quit"]:
             return "fin", None
+        if palabra.lower() == "x":
+            return "ver_salidas", None
         return palabra, None
 
     # 2+ palabras
@@ -558,6 +560,25 @@ def ejecutar_comando(verbo, objeto):
         mensaje_final = "Gracias por jugar."
         cerrar_juego_despues(mensaje_final)
         return hab, descripcion_con_objetos(hab), mensaje_final
+
+    # VER SALIDAS
+    if verbo == "ver_salidas":
+        salidas_hab = SALIDAS.get(hab, {})
+        orden = ["n", "s", "e", "o", "subir", "bajar"]
+        mapa_nombres = {
+            "n": "Norte", "s": "Sur", "e": "Este", "o": "Oeste",
+            "subir": "Subir", "bajar": "Bajar"
+        }
+        nombres = []
+        for k in orden:
+            if k in salidas_hab:
+                nombres.append(mapa_nombres[k])
+
+        if not nombres:
+            return hab, descripcion_con_objetos(hab), "No parece haber salidas visibles."
+        
+        msg = "Salidas visibles: " + lista_a_texto_natural(nombres) + "."
+        return hab, descripcion_con_objetos(hab), msg
 
     # Otro comando
     return hab, descripcion_con_objetos(hab), "¿Cómo dices?"
